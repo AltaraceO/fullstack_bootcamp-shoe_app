@@ -1,3 +1,7 @@
 .app {
   display: inline-block;
 }
+
+.update-window {
+  background: beige;
+}

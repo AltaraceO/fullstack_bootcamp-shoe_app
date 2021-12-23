@@ -2,25 +2,52 @@
 //import getCat funciton to be called after each put
 
 import React, { Component } from "react";
+import api from "../api";
 
 class Update extends Component {
   state = { first: "", last: "", breed: "" };
-  //props = getCat function + id
-  onClickHandle = () => {
+
+  onClickHandle = async () => {
     this.props.visFunc();
+
+    await api.put(id, this.state);
   };
 
-  // updateApi=async()={
-  //     await axios.put -> like
-  //     after await getCat
-  // }
+  handleOnChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+    // e.target.name;
+    // console.log(e.target.value);
+  };
+
   render() {
+    console.log(this.state);
     return (
-      <div>
-        <input type="text" name="first" />
-        <input type="text" name="last" />
-        <input type="text" name="breed" />
-        <button onClick={this.onClickHandle}></button>
+      <div className="update-window">
+        <input
+          onChange={this.handleOnChange}
+          type="text"
+          name="first"
+          placeholder="New name"
+          value={this.state.first}
+        />
+        <br />
+        <input
+          onChange={this.handleOnChange}
+          type="text"
+          name="last"
+          placeholder="New last name"
+          value={this.state.last}
+        />
+        <br />
+        <input
+          onChange={this.handleOnChange}
+          type="text"
+          name="breed"
+          placeholder="New breed"
+          value={this.state.breed}
+        />
+        <br />
+        <button onClick={this.onClickHandle}>Update</button>
       </div>
     );
   }
