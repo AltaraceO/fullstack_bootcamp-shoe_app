@@ -10,7 +10,7 @@ class App extends React.Component {
   };
 
   getCat = async () => {
-    let apiCats = await api.get();
+    const apiCats = await api.get();
     this.setState({ cats: apiCats.data });
   };
 
@@ -19,7 +19,7 @@ class App extends React.Component {
   }
 
   render() {
-    let shoeList = this.state.cats.map((cat) => {
+    const shoeList = this.state.cats.map((cat) => {
       return <ShoeCard func={this.getCat} cat={cat} key={cat.id} />;
     });
     return (

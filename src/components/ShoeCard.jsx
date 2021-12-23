@@ -4,9 +4,11 @@ import Update from "./Update";
 class ShoeCard extends Component {
   state = { visibilityUpdate: false, id: "" };
 
-  // changeVis = () => {
-  //   this.setState({ visibilityUpdate: !visibilityUpdate });
-  // };
+  changeVis = () => {
+    this.setState((prevState) => {
+      return { visibilityUpdate: !prevState.visibilityUpdate };
+    });
+  };
 
   render() {
     if (this.state.visibilityUpdate)
@@ -14,12 +16,12 @@ class ShoeCard extends Component {
         <Update
           id={this.id}
           getFunc={this.props.getGet}
-          // visFunc={this.changeVis}
+          visFunc={this.changeVis}
         />
       );
     return (
       <div key={this.props.cat.id}>
-        {this.props.cat.first}
+        {this.props.cat.first} <strong>the cat</strong>
         <br />
         {this.props.cat.last}
         <br />
