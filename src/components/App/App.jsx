@@ -1,5 +1,6 @@
 import React from "react";
 import ShoeCard from "../ShoeCard";
+import Create from "../Create";
 import "./App.css";
 
 import api from "../api";
@@ -20,12 +21,12 @@ class App extends React.Component {
 
   render() {
     const shoeList = this.state.cats.map((cat) => {
-      return <ShoeCard func={this.getCat} cat={cat} key={cat.id} />;
+      return <ShoeCard funcGetCat={this.getCat} cat={cat} key={cat.id} />;
     });
     return (
-      <div>
+      <div className="main-container">
         <div>{shoeList}</div>
-        {/* <Create /> */}
+        <Create funcGetCats={this.getCat} />
       </div>
     );
   }

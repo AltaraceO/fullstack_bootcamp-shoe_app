@@ -5,3 +5,21 @@
 .update-window {
   background: beige;
 }
+
+.main-container {
+  display: flex;
+  max-width: 1000px;
+  margin: 20px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 60px;
+}
+.cat-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 3px;
+}

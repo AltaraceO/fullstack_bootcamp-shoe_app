@@ -2,23 +2,53 @@
 //import getCat funciton to be called after each put
 
 import React, { Component } from "react";
+import api from "./api";
 
 class Create extends Component {
-  state = {};
+  state = { first: "", last: "", breed: "", id: "7000999" };
 
-  // onClickHandle
+  // generate unique ID
 
-  createNewApi = async () => {
-    // await axios.post -> like
-    //then getCat
+  handleOnChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
   };
+  onClickHandle = async () => {
+    const newObj = this.state;
+    console.log(newObj);
+    await api.post({ newObj });
+
+    // this.props.funcGetCats();
+  };
+
   render() {
+    console.log(this.state);
     return (
       <div>
-        <input type="text" />
-        <input type="text" />
-        <input type="text" />
-        <button></button>
+        <input
+          onChange={this.handleOnChange}
+          type="text"
+          name="first"
+          placeholder="New name"
+          value={this.state.first}
+        />
+        <br />
+        <input
+          onChange={this.handleOnChange}
+          type="text"
+          name="last"
+          placeholder="New last name"
+          value={this.state.last}
+        />
+        <br />
+        <input
+          onChange={this.handleOnChange}
+          type="text"
+          name="breed"
+          placeholder="New breed"
+          value={this.state.breed}
+        />
+        <br />
+        <button onClick={this.onClickHandle}>Add new cat</button>
       </div>
     );
   }

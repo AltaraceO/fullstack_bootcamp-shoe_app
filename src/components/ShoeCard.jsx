@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Update from "./Update";
+import api from "./api";
 
 class ShoeCard extends Component {
   state = { visibilityUpdate: false, id: "" };
@@ -10,32 +11,39 @@ class ShoeCard extends Component {
     });
   };
 
+  deleteCat = async () => {
+    await api.delete(this.props.cat.id);
+    this.props.funcGetCat();
+  };
+
   render() {
+    console.log();
     if (this.state.visibilityUpdate)
       return (
         <Update
-          id={this.id}
-          getFunc={this.props.getGet}
+          id={this.props.cat.id}
+          funcGetCats={this.props.funcGetCat}
           visFunc={this.changeVis}
         />
       );
     return (
-      <div key={this.props.cat.id}>
-        {this.props.cat.first} <strong>the cat</strong>
+      <div className="cat-card">
+        <div>
+          {this.props.cat.first} <strong>the cat</strong>
+        </div>
+        Family: {this.props.cat.last}
         <br />
-        {this.props.cat.last}
+        Breed: {this.props.cat.breed}
         <br />
-        {this.props.cat.breed}
-        <br />
-        <button>Delete</button>
-        <button onClick={this.changeVis}>Update</button>
+        <div>
+          <button onClick={this.deleteCat}>Delete</button>
+          <button onClick={this.changeVis}>Update</button>
+        </div>
       </div>
     );
   }
 }
 export default ShoeCard;
-
-//child is the update
 
 // create each cat instance card with call that cat card information
 
