@@ -5,23 +5,20 @@ import React, { Component } from "react";
 import api from "./api";
 
 class Create extends Component {
-  state = { first: "", last: "", breed: "", id: "7000999" };
-
-  // generate unique ID
+  state = { first: "", last: "", breed: "", id: "" };
 
   handleOnChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
   onClickHandle = async () => {
+    const originalState = { first: "", last: "", breed: "", id: "" };
     const newObj = this.state;
-    console.log(newObj);
     await api.post("", newObj);
-
     this.props.funcGetCats();
+    this.setState(originalState);
   };
 
   render() {
-    console.log(this.state);
     return (
       <div>
         <input

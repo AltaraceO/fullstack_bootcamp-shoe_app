@@ -2,7 +2,6 @@ import React from "react";
 import ShoeCard from "../ShoeCard";
 import Create from "../Create";
 import "./App.css";
-
 import api from "../api";
 
 class App extends React.Component {
