@@ -13,13 +13,9 @@ class Create extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
   onClickHandle = async () => {
-    // try {
     const newObj = this.state;
     console.log(newObj);
     await api.post("", newObj);
-    // } catch (e) {
-    //   console.log("error:", e);
-    // }
 
     this.props.funcGetCats();
   };
